@@ -14,6 +14,7 @@
 | Java Validation API |    3.0.6    |
 | Flyway-core         |    9.16.3   |
 | Flyway-mysql        |    9.20.1   |
+| H2 database         |   2.1.210   |
 
 
 </details>
