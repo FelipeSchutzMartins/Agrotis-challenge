@@ -21,7 +21,7 @@ public class LaboratoryService {
 
 
     public Laboratory findById(Long id) throws AgrotisException {
-        return laboratoryRepository.findById(id)
+        return this.laboratoryRepository.findById(id)
                 .orElseThrow(() -> new AgrotisException("Laboratório {" + id + "} não encontrado"));
     }
 
@@ -31,13 +31,13 @@ public class LaboratoryService {
 
     public LaboratoryResponse create(CreateLaboratoryRequest request) {
         Laboratory laboratory = LaboratoryMapper.buildLaboratory(request);
-        return LaboratoryMapper.buildResponse(laboratoryRepository.save(laboratory));
+        return LaboratoryMapper.buildResponse(this.laboratoryRepository.save(laboratory));
     }
 
     public LaboratoryResponse update(UpdateLaboratoryRequest request) throws AgrotisException {
         Laboratory laboratory = findById(request.getId());
         laboratory.setName(request.getName());
-        return LaboratoryMapper.buildResponse(laboratoryRepository.save(laboratory));
+        return LaboratoryMapper.buildResponse(this.laboratoryRepository.save(laboratory));
     }
 
     public void delete(List<Long> ids) throws AgrotisException {
@@ -48,11 +48,11 @@ public class LaboratoryService {
 
     public void delete(Long id) throws AgrotisException {
         var laboratory = findById(id);
-        laboratoryRepository.delete(laboratory);
+        this.laboratoryRepository.delete(laboratory);
     }
 
     public List<LaboratoryResponse> findAll() {
-        return laboratoryRepository.findAll().stream()
+        return this.laboratoryRepository.findAll().stream()
                 .map(LaboratoryMapper::buildResponse)
                 .collect(Collectors.toList());
     }

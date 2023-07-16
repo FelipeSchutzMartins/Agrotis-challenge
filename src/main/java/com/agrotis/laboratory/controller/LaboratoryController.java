@@ -19,28 +19,28 @@ public class LaboratoryController {
     private LaboratoryService laboratoryService;
 
     @GetMapping("/show/{id}")
-    public LaboratoryResponse find(@PathVariable("id") Long id) throws AgrotisException {
-        return laboratoryService.show(id);
+    public LaboratoryResponse show(@PathVariable("id") Long id) throws AgrotisException {
+        return this.laboratoryService.show(id);
     }
 
     @GetMapping("/findAll")
     public List<LaboratoryResponse> findAll() {
-        return laboratoryService.findAll();
+        return this.laboratoryService.findAll();
     }
 
-    @PutMapping("/create")
+    @PostMapping("/create")
     public LaboratoryResponse create(@Valid @RequestBody CreateLaboratoryRequest request) {
-        return laboratoryService.create(request);
+        return this.laboratoryService.create(request);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public LaboratoryResponse update(@Valid @RequestBody UpdateLaboratoryRequest request) throws AgrotisException {
-        return laboratoryService.update(request);
+        return this.laboratoryService.update(request);
     }
 
     @DeleteMapping("/delete/{ids}")
     public void delete(@PathVariable("ids") List<Long> ids) throws AgrotisException {
-        laboratoryService.delete(ids);
+        this.laboratoryService.delete(ids);
     }
 
 }

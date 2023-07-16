@@ -7,6 +7,7 @@ import com.agrotis.property.dtos.response.PropertyResponse;
 import com.agrotis.property.entity.Property;
 import com.agrotis.property.mappers.PropertyMapper;
 import com.agrotis.property.repository.PropertyRepository;
+import com.agrotis.utils.RegexPatternsUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class PropertyService {
     private PropertyRepository propertyRepository;
 
     public Property findById(Long id) throws AgrotisException {
-        return propertyRepository.findById(id)
+        return this.propertyRepository.findById(id)
                 .orElseThrow(() -> new AgrotisException("Propriedade {" + id + "} não encontrada"));
     }
 
@@ -29,7 +30,7 @@ public class PropertyService {
     }
 
     public List<PropertyResponse> findAll() {
-        return propertyRepository.findAll().stream()
+        return this.propertyRepository.findAll().stream()
                 .map(PropertyMapper::buildResponse)
                 .collect(Collectors.toList());
     }
@@ -37,7 +38,7 @@ public class PropertyService {
     public PropertyResponse create(CreatePropertyRequest request) throws AgrotisException {
         Property property = PropertyMapper.buildProperty(request);
         validateProperty(property);
-        return PropertyMapper.buildResponse(propertyRepository.save(property));
+        return PropertyMapper.buildResponse(this.propertyRepository.save(property));
     }
 
     public PropertyResponse update(UpdatePropertyRequest request) throws AgrotisException {
@@ -45,7 +46,7 @@ public class PropertyService {
         validateProperty(property);
         property.setName(request.getName());
         property.setCnpj(request.getCnpj());
-        return PropertyMapper.buildResponse(propertyRepository.save(property));
+        return PropertyMapper.buildResponse(this.propertyRepository.save(property));
     }
 
     public void delete(List<Long> ids) throws AgrotisException {
@@ -56,16 +57,12 @@ public class PropertyService {
 
     public void delete(Long id) throws AgrotisException {
         var property = findById(id);
-        propertyRepository.delete(property);
+        this.propertyRepository.delete(property);
     }
 
     private void validateProperty(Property property) throws AgrotisException {
-        if (containsNonNumeric(property.getCnpj())) {
+        if (RegexPatternsUtils.containsNonNumeric(property.getCnpj())) {
             throw new AgrotisException("CNPJ inválido");
         }
-    }
-
-    private Boolean containsNonNumeric(String input) {
-        return input.matches(".*\\D.*");
     }
 }

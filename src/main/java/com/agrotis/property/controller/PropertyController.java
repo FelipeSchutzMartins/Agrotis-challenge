@@ -19,28 +19,28 @@ public class PropertyController {
     private PropertyService propertyService;
 
     @GetMapping("/show/{id}")
-    public PropertyResponse find(@PathVariable("id") Long id) throws AgrotisException {
-        return propertyService.show(id);
+    public PropertyResponse show(@PathVariable("id") Long id) throws AgrotisException {
+        return this.propertyService.show(id);
     }
 
     @GetMapping("/findAll")
     public List<PropertyResponse> findAll() {
-        return propertyService.findAll();
+        return this.propertyService.findAll();
     }
 
-    @PutMapping("/create")
+    @PostMapping("/create")
     public PropertyResponse create(@Valid @RequestBody CreatePropertyRequest request) throws AgrotisException {
-        return propertyService.create(request);
+        return this.propertyService.create(request);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public PropertyResponse update(@Valid @RequestBody UpdatePropertyRequest request) throws AgrotisException {
-        return propertyService.update(request);
+        return this.propertyService.update(request);
     }
 
     @DeleteMapping("/delete/{ids}")
     public void delete(@PathVariable("ids") List<Long> ids) throws AgrotisException {
-        propertyService.delete(ids);
+        this.propertyService.delete(ids);
     }
 
 }

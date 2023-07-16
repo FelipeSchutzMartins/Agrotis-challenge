@@ -26,7 +26,7 @@ public class PropertyOwnerService {
     private PropertyService propertyService;
 
     public PropertyOwner findById(Long id) throws AgrotisException {
-        return propertyOwnerRepository.findById(id)
+        return this.propertyOwnerRepository.findById(id)
                 .orElseThrow(() -> new AgrotisException("Proprietário {" + id + "} não encontrado"));
     }
     public PropertyOwnerResponse show(Long id) throws AgrotisException {
@@ -35,24 +35,24 @@ public class PropertyOwnerService {
     }
 
     public List<PropertyOwnerResponse> findAll() {
-        return propertyOwnerRepository.findAll().stream()
+        return this.propertyOwnerRepository.findAll().stream()
                 .map(PropertyOwnerMapper::buildResponse)
                 .collect(Collectors.toList());
     }
 
     public PropertyOwnerResponse create(CreatePropertyOwnerRequest request) throws AgrotisException {
-        Property property = propertyService.findById(request.getPropertyId());
-        Laboratory laboratory = laboratoryService.findById(request.getLaboratoryId());
+        Property property = this.propertyService.findById(request.getPropertyId());
+        Laboratory laboratory = this.laboratoryService.findById(request.getLaboratoryId());
         PropertyOwner propertyOwner = PropertyOwnerMapper.buildPropertyOwner(request, property, laboratory);
         validatePropertyOwner(propertyOwner);
-        return PropertyOwnerMapper.buildResponse(propertyOwnerRepository.save(propertyOwner));
+        return PropertyOwnerMapper.buildResponse(this.propertyOwnerRepository.save(propertyOwner));
     }
 
     public PropertyOwnerResponse update(UpdatePropertyOwnerRequest request) throws AgrotisException {
         PropertyOwner propertyOwner = findById(request.getId());
         updatePropertyOwner(propertyOwner, request);
         validatePropertyOwner(propertyOwner);
-        return PropertyOwnerMapper.buildResponse(propertyOwnerRepository.save(propertyOwner));
+        return PropertyOwnerMapper.buildResponse(this.propertyOwnerRepository.save(propertyOwner));
     }
 
     public void delete(List<Long> ids) throws AgrotisException {
@@ -63,7 +63,7 @@ public class PropertyOwnerService {
 
     public void delete(Long id) throws AgrotisException {
         var property = findById(id);
-        propertyOwnerRepository.delete(property);
+        this.propertyOwnerRepository.delete(property);
     }
 
     private void validatePropertyOwner(PropertyOwner propertyOwner) throws AgrotisException {
@@ -73,8 +73,8 @@ public class PropertyOwnerService {
     }
 
     private void updatePropertyOwner(PropertyOwner propertyOwner, UpdatePropertyOwnerRequest request) throws AgrotisException {
-        Property property = propertyService.findById(request.getPropertyId());
-        Laboratory laboratory = laboratoryService.findById(request.getLaboratoryId());
+        Property property = this.propertyService.findById(request.getPropertyId());
+        Laboratory laboratory = this.laboratoryService.findById(request.getLaboratoryId());
         propertyOwner.setName(request.getName());
         propertyOwner.setObservations(request.getObservations());
         propertyOwner.setStartDate(request.getStartDate());
