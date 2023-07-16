@@ -34,3 +34,18 @@
 4. Run the command "mvn spring-boot:run" on this repository's folder in order to run the application.
 
 ### How to use
+<details>
+<summary>Click to expand!</summary>
+
+| **Dependency**      | **Version** |
+|---------------------|:-----------:|
+| Spring Boot         |    3.1.1    |
+| Spring Data JPA     |    3.1.0    |
+| MySQL               |     8.x     |
+| Lombok              |   1.18.26   |
+| Java Validation API |    3.0.6    |
+| Flyway-core         |    9.16.3   |
+| Flyway-mysql        |    9.20.1   |
+
+
+</details>
