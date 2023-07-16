@@ -38,20 +38,20 @@
 |-------------|:---------:|
 |    GET      | /laboratory/show/{id} |
 |    GET      | /laboratory/findAll |
-|    PUT      | /laboratory/create  |
-|    POST     | /laboratory/update  |
+|    POST     | /laboratory/create  |
+|    PUT      | /laboratory/update  |
 |    DELETE   | /laboratory/delete/{ids} |
 |||
 |    GET      | /property/show/{id} |
 |    GET      | /property/findAll |
-|    PUT      | /property/create  |
-|    POST     | /property/update  |
+|    POST      | /property/create  |
+|    PUT     | /property/update  |
 |    DELETE   | /property/delete/{ids} |
 |||
 |    GET      | /propertyOwner/show/{id} |
 |    GET      | /propertyOwner/findAll |
-|    PUT      | /propertyOwner/create  |
-|    POST     | /propertyOwner/update  |
+|    POST      | /propertyOwner/create  |
+|    PUT     | /propertyOwner/update  |
 |    DELETE   | /propertyOwner/delete/{ids} |
 
 ### Delete endpoint examples
@@ -60,27 +60,27 @@
 #### /propertyOwner/delete/1,2
 
 ### Request body examples
-#### PUT /Laboratory/create
+#### POST /Laboratory/create
 ```
 {
 	"name": "Agro Skynet"
 }
 ```
-#### POST /Laboratory/update
+#### PUT /Laboratory/update
 ```
 {
 	"id": 1,
 	"name": "Agro Skynet"
 }
 ```
-#### PUT /property/create
+#### POST /property/create
 ```
 {
 	"name": "Agrotis 1",
 	"cnpj": "08562685000171"
 }
 ```
-#### POST /property/update
+#### PUT /property/update
 ```
 {
         "id": 1,
@@ -89,7 +89,7 @@
 }
 ```
 
-#### PUT /propertyOwner/create
+#### POST /propertyOwner/create
 ```
 {
 	"name": "Jon doe",
@@ -100,7 +100,7 @@
 	"laboratoryId": "2"
 }
 ```
-#### POST /propertyOwner/update
+#### PUT /propertyOwner/update
 ```
 {
         "id": 1,
