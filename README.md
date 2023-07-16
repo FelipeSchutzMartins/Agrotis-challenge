@@ -38,18 +38,17 @@
 |-------------|:---------:|
 |    GET      | /laboratory/show/{id} |
 |    GET      | /laboratory/findAll |
-|    GET      | /laboratory/findAll |
 |    PUT      | /laboratory/create  |
 |    POST     | /laboratory/update  |
 |    DELETE   | /laboratory/delete/{ids} |
+|-------------|:---------:|
 |    GET      | /property/show/{id} |
-|    GET      | /property/findAll |
 |    GET      | /property/findAll |
 |    PUT      | /property/create  |
 |    POST     | /property/update  |
 |    DELETE   | /property/delete/{ids} |
+|-------------|:---------:|
 |    GET      | /propertyOwner/show/{id} |
-|    GET      | /propertyOwner/findAll |
 |    GET      | /propertyOwner/findAll |
 |    PUT      | /propertyOwner/create  |
 |    POST     | /propertyOwner/update  |
