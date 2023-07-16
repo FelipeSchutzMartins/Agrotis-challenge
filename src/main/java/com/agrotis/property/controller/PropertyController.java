@@ -1,8 +1,6 @@
 package com.agrotis.property.controller;
 
 import com.agrotis.exceptions.AgrotisException;
-import com.agrotis.laboratory.dtos.request.CreateLaboratoryRequest;
-import com.agrotis.laboratory.dtos.request.UpdateLaboratoryRequest;
 import com.agrotis.property.dtos.request.CreatePropertyRequest;
 import com.agrotis.property.dtos.request.UpdatePropertyRequest;
 import com.agrotis.property.dtos.response.PropertyResponse;
@@ -40,8 +38,8 @@ public class PropertyController {
         return propertyService.update(request);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestParam("ids") List<Long> ids) throws AgrotisException {
+    @DeleteMapping("/delete/{ids}")
+    public void delete(@PathVariable("ids") List<Long> ids) throws AgrotisException {
         propertyService.delete(ids);
     }
 

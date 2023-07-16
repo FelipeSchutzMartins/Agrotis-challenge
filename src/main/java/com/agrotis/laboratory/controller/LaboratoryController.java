@@ -38,8 +38,8 @@ public class LaboratoryController {
         return laboratoryService.update(request);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestParam("ids") List<Long> ids) throws AgrotisException {
+    @DeleteMapping("/delete/{ids}")
+    public void delete(@PathVariable("ids") List<Long> ids) throws AgrotisException {
         laboratoryService.delete(ids);
     }
 

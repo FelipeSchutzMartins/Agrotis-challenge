@@ -39,8 +39,8 @@ public class PropertyOwnerController {
         return propertyOwnerService.update(request);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestParam("ids") List<Long> ids) throws AgrotisException {
+    @DeleteMapping("/delete/{ids}")
+    public void delete(@PathVariable("ids") List<Long> ids) throws AgrotisException {
         propertyOwnerService.delete(ids);
     }
 
