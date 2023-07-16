@@ -83,7 +83,7 @@
 #### POST /property/update
 ```
 {
-  "id": 1,
+        "id": 1,
 	"name": "Agrotis 1",
 	"cnpj": "08562685000171"
 }
@@ -103,7 +103,7 @@
 #### POST /propertyOwner/update
 ```
 {
-  "id": 1,
+        "id": 1,
 	"name": "Jon doe",
 	"startDate": "2022-02-02",
 	"endDate": "2022-02-02",
