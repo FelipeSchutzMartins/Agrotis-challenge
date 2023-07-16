@@ -22,7 +22,7 @@
 
 ### Prerequisites
 
-* Globally install Java 8
+* Globally install Java
 * Globally install Maven
 * Globally install Docker
 
