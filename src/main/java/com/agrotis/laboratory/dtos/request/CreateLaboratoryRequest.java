@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class CreateLaboratoryRequest {
 
     @NotNull(message = "Nome inválido")
-    @NotBlank(message = "Nome inválido")
+    @NotBlank(message = "Nome não pode estar vazio")
     private String name;
 
 }

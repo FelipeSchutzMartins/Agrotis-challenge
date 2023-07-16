@@ -44,12 +44,14 @@ public class PropertyOwnerService {
         Property property = propertyService.findById(request.getPropertyId());
         Laboratory laboratory = laboratoryService.findById(request.getLaboratoryId());
         PropertyOwner propertyOwner = PropertyOwnerMapper.buildPropertyOwner(request, property, laboratory);
+        validatePropertyOwner(propertyOwner);
         return PropertyOwnerMapper.buildResponse(propertyOwnerRepository.save(propertyOwner));
     }
 
     public PropertyOwnerResponse update(UpdatePropertyOwnerRequest request) throws AgrotisException {
         PropertyOwner propertyOwner = findById(request.getId());
         updatePropertyOwner(propertyOwner, request);
+        validatePropertyOwner(propertyOwner);
         return PropertyOwnerMapper.buildResponse(propertyOwnerRepository.save(propertyOwner));
     }
 
@@ -62,6 +64,12 @@ public class PropertyOwnerService {
     public void delete(Long id) throws AgrotisException {
         var property = findById(id);
         propertyOwnerRepository.delete(property);
+    }
+
+    private void validatePropertyOwner(PropertyOwner propertyOwner) throws AgrotisException {
+        if (propertyOwner.getStartDate().isAfter(propertyOwner.getEndDate())) {
+            throw new AgrotisException("Data inicial deve ser menor do que a data final");
+        }
     }
 
     private void updatePropertyOwner(PropertyOwner propertyOwner, UpdatePropertyOwnerRequest request) throws AgrotisException {

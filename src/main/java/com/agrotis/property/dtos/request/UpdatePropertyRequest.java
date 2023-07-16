@@ -16,11 +16,11 @@ public class UpdatePropertyRequest {
     private Long id;
 
     @NotNull(message = "Nome inválido")
-    @NotBlank(message = "Nome inválido")
+    @NotBlank(message = "Nome não pode estar vazio")
     private String name;
 
     @NotNull(message = "CNPJ inválido")
-    @NotBlank(message = "CNPJ inválido")
-    @Size(max = 14, message = "CNPJ inválido")
+    @NotBlank(message = "CNPJ não pode estar vazio")
+    @Size(min = 14, max = 14, message = "CNPJ precisa ter 14 digitos")
     private String cnpj;
 }

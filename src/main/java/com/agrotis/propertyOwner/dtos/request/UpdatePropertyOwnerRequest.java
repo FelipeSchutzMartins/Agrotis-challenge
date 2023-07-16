@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,16 +18,16 @@ public class UpdatePropertyOwnerRequest {
     private Long id;
 
     @NotNull(message = "Nome inválido")
-    @NotBlank(message = "Nome inválido")
+    @NotBlank(message = "Nome não pode estar vazio")
     private String name;
 
     @NotNull(message = "Data inicial inválida")
-    @DateTimeFormat(pattern="yyyy-MM-ddTHH:mm:ssZ")
-    private Date startDate;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate startDate;
 
     @NotNull(message = "Data final inválida")
-    @DateTimeFormat(pattern="yyyy-MM-ddTHH:mm:ssZ")
-    private Date endDate;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate endDate;
 
     private String observations;
 

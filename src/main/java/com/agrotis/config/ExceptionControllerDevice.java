@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 
 @RestControllerAdvice
-class ExceptionControllerAdvice {
+public class ExceptionControllerDevice {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
