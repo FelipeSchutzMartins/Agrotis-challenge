@@ -41,13 +41,13 @@
 |    PUT      | /laboratory/create  |
 |    POST     | /laboratory/update  |
 |    DELETE   | /laboratory/delete/{ids} |
-|-------------|:---------:|
+|||
 |    GET      | /property/show/{id} |
 |    GET      | /property/findAll |
 |    PUT      | /property/create  |
 |    POST     | /property/update  |
 |    DELETE   | /property/delete/{ids} |
-|-------------|:---------:|
+|||
 |    GET      | /propertyOwner/show/{id} |
 |    GET      | /propertyOwner/findAll |
 |    PUT      | /propertyOwner/create  |
