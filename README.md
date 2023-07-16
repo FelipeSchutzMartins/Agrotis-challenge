@@ -1,10 +1,5 @@
 # Agrotis-challenge
 
-## Table of Contents
-
-- [Dependencies](#dependencies)
-- [How to use](#how-to-use-this-repository)
-
 ## Dependencies
 
 <details>
