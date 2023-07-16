@@ -1,0 +1,11 @@
+package com.agrotis.laboratory.dtos.response;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class LaboratoryResponse {
+    private Long id;
+    private String nome;
+}
