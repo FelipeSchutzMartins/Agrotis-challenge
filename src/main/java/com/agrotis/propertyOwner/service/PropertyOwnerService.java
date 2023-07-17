@@ -11,6 +11,7 @@ import com.agrotis.propertyOwner.dtos.response.PropertyOwnerResponse;
 import com.agrotis.propertyOwner.entity.PropertyOwner;
 import com.agrotis.propertyOwner.mappers.PropertyOwnerMapper;
 import com.agrotis.propertyOwner.repository.PropertyOwnerRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,7 @@ public class PropertyOwnerService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public PropertyOwnerResponse create(CreatePropertyOwnerRequest request) throws AgrotisException {
         Property property = this.propertyService.findById(request.getPropertyId());
         Laboratory laboratory = this.laboratoryService.findById(request.getLaboratoryId());
@@ -48,6 +50,7 @@ public class PropertyOwnerService {
         return PropertyOwnerMapper.buildResponse(this.propertyOwnerRepository.save(propertyOwner));
     }
 
+    @Transactional
     public PropertyOwnerResponse update(UpdatePropertyOwnerRequest request) throws AgrotisException {
         PropertyOwner propertyOwner = findById(request.getId());
         updatePropertyOwner(propertyOwner, request);
@@ -55,6 +58,7 @@ public class PropertyOwnerService {
         return PropertyOwnerMapper.buildResponse(this.propertyOwnerRepository.save(propertyOwner));
     }
 
+    @Transactional
     public void delete(List<Long> ids) throws AgrotisException {
         for(Long id : ids) {
             delete(id);

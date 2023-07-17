@@ -7,6 +7,7 @@ import com.agrotis.laboratory.dtos.response.LaboratoryResponse;
 import com.agrotis.laboratory.entity.Laboratory;
 import com.agrotis.laboratory.mappers.LaboratoryMapper;
 import com.agrotis.laboratory.repository.LaboratoryRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,17 +30,20 @@ public class LaboratoryService {
         return LaboratoryMapper.buildResponse(findById(id));
     }
 
+    @Transactional
     public LaboratoryResponse create(CreateLaboratoryRequest request) {
         Laboratory laboratory = LaboratoryMapper.buildLaboratory(request);
         return LaboratoryMapper.buildResponse(this.laboratoryRepository.save(laboratory));
     }
 
+    @Transactional
     public LaboratoryResponse update(UpdateLaboratoryRequest request) throws AgrotisException {
         Laboratory laboratory = findById(request.getId());
         laboratory.setName(request.getName());
         return LaboratoryMapper.buildResponse(this.laboratoryRepository.save(laboratory));
     }
 
+    @Transactional
     public void delete(List<Long> ids) throws AgrotisException {
         for(Long id : ids) {
             delete(id);

@@ -1,0 +1,22 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/agrotis?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: agrotis
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  flyway:
+    url: jdbc:mysql://localhost:3307/
+    schemas: agrotis
+    user: root
+    password: agrotis
+    locations: classpath:db/migration
+    validate-migration-naming: true

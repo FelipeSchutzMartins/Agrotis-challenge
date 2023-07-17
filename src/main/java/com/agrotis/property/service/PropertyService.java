@@ -8,6 +8,7 @@ import com.agrotis.property.entity.Property;
 import com.agrotis.property.mappers.PropertyMapper;
 import com.agrotis.property.repository.PropertyRepository;
 import com.agrotis.utils.RegexPatternsUtils;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,20 +36,23 @@ public class PropertyService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public PropertyResponse create(CreatePropertyRequest request) throws AgrotisException {
         Property property = PropertyMapper.buildProperty(request);
         validateProperty(property);
         return PropertyMapper.buildResponse(this.propertyRepository.save(property));
     }
 
+    @Transactional
     public PropertyResponse update(UpdatePropertyRequest request) throws AgrotisException {
         Property property = findById(request.getId());
-        validateProperty(property);
         property.setName(request.getName());
         property.setCnpj(request.getCnpj());
+        validateProperty(property);
         return PropertyMapper.buildResponse(this.propertyRepository.save(property));
     }
 
+    @Transactional
     public void delete(List<Long> ids) throws AgrotisException {
         for(Long id : ids) {
             delete(id);
