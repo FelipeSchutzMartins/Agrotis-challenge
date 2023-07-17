@@ -7,5 +7,5 @@ import lombok.Data;
 @Builder
 public class LaboratoryResponse {
     private Long id;
-    private String nome;
+    private String name;
 }

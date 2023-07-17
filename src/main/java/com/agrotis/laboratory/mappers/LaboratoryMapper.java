@@ -9,7 +9,7 @@ public class LaboratoryMapper {
     public static LaboratoryResponse buildResponse(Laboratory laboratory) {
         return LaboratoryResponse.builder()
                 .id(laboratory.getId())
-                .nome(laboratory.getName())
+                .name(laboratory.getName())
                 .build();
     }
 
