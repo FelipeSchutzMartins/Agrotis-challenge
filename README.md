@@ -34,6 +34,10 @@
 3. Run the command "mvn install" on this repository's folder.
 4. Run the command "mvn spring-boot:run" on this repository's folder in order to run the application.
 
+### Tests
+
+1. Run the command "mvn test" on this repository's folder.
+
 ### Endpoints
 |  **Method** | **Route** |
 |-------------|:---------:|
